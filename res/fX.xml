@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@color/ghostwhite" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp" android:text="设置" android:layout_marginStart="16dp"/>
+        </LinearLayout>
+        <LinearLayout android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/ic_service_green" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="48dp" android:text="@string/title_showSystemApp"/>
+            <androidx.appcompat.widget.SwitchCompat android:id="@+id/switch_showSystemApp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="16dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp" android:text="关于" android:layout_marginStart="16dp"/>
+        <LinearLayout android:id="@+id/item_about" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:id="@+id/about_icon" android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/ic_developer" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_about"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/item_update" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/ic_ali_replace" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_checkUpdate" android:layout_centerVertical="true"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/item_group" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/ic_ali_group" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_group" android:layout_centerVertical="true"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/item_notice" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/icon_notice" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_notice" android:layout_centerVertical="true"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/item_agreement" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/ic_ali_agreement" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_agreement" android:layout_centerVertical="true"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/item_weixin" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/icon_weixin" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_weixin" android:layout_centerVertical="true"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/item_web" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/ic_ali_web" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_web" android:layout_centerVertical="true"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/item_SpecialThanks" android:background="?attr/selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="48dp">
+            <ImageView android:layout_width="16dp" android:layout_height="16dp" android:layout_margin="16dp" android:src="@drawable/ic_ali_group" app:tint="#999999"/>
+            <TextView android:textSize="14sp" android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/title_SpecialThanks" android:layout_centerVertical="true"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

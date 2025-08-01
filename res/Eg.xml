@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/argBtn" android:background="@drawable/button" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/white" android:gravity="center" android:id="@+id/argText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp" android:text="@string/title_arg" android:layout_marginVertical="10dp"/>
+        <TextView android:id="@+id/ic_expanded" android:background="@drawable/ic_expanded" android:layout_width="15dp" android:layout_height="15dp"/>
+    </LinearLayout>
+    <EditText android:textSize="14sp" android:gravity="center" android:id="@+id/argValue" android:background="@drawable/shape" android:visibility="gone" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="5dp" android:hint="@string/editArgsHint" android:maxLines="1"/>
+</LinearLayout>

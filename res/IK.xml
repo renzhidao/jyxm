@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:background="@color/ghostwhite" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:background="?attr/colorPrimary" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:layout_constraintTop_toTopOf="0" app:popupTheme="@style/AppTheme.PopupOverlay" app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" app:title="应用设置" app:titleTextColor="@color/white"/>
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tablayout" android:background="?attr/colorPrimary" android:layout_width="match_parent" android:layout_height="wrap_content" app:tabIndicatorColor="#ffffffff" app:tabMode="1" app:tabSelectedTextColor="@color/white" app:tabTextAppearance="@style/TextAppearance.Widget.TabWidget" app:tabTextColor="@color/ghostwhite">
+        <com.google.android.material.tabs.TabItem android:id="@+id/navigation_lua" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/simpleFunction"/>
+        <com.google.android.material.tabs.TabItem android:id="@+id/navigation_log" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fridaScript"/>
+    </com.google.android.material.tabs.TabLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.viewpager.widget.ViewPager android:id="@+id/viewPager" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

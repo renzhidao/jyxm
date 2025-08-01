@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:background="@color/white" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp">
+        <Button android:textColor="@color/white" android:gravity="center" android:id="@+id/addHook" android:background="@drawable/button" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:layout_marginBottom="20dp" android:text="@string/importScript"/>
+    </LinearLayout>
+    <com.junge.algorithmAidePro.ImageList.SwitchList android:scrollbarSize="10dp" android:id="@+id/ImageListView" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent" app:fastScrollEnabled="true" app:fastScrollHorizontalThumbDrawable="@drawable/scroller_drawable" app:fastScrollHorizontalTrackDrawable="@drawable/scroller_bg_drawable" app:fastScrollVerticalThumbDrawable="@drawable/scroller_drawable" app:fastScrollVerticalTrackDrawable="@drawable/scroller_bg_drawable"/>
+</LinearLayout>

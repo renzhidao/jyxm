@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <Preference app:fragment="com.junge.algorithmAide.Activity.AppSettingsActivity$MessagesFragment" app:icon="@drawable/messages" app:key="messages_header" app:title="@string/messages_header"/>
+    <Preference app:fragment="com.junge.algorithmAide.Activity.AppSettingsActivity$SyncFragment" app:icon="@drawable/sync" app:key="sync_header" app:title="@string/sync_header"/>
+</PreferenceScreen>

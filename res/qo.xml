@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:background="?attr/colorPrimary" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:popupTheme="@style/AppTheme.PopupOverlay" app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" app:title="@string/app_name" app:titleTextColor="@color/white">
+            <Button android:id="@+id/btn_hellp" android:background="@drawable/ic_help" android:visibility="gone" android:layout_width="24dp" android:layout_height="24dp"/>
+        </androidx.appcompat.widget.Toolbar>
+        <com.ferfalk.simplesearchview.SimpleSearchView android:id="@+id/searchView" android:background="?attr/colorPrimary" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </FrameLayout>
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tablayout" android:background="?attr/colorPrimary" android:layout_width="match_parent" android:layout_height="wrap_content" app:tabIndicatorColor="#ffffffff" app:tabMode="1" app:tabSelectedTextColor="@color/white" app:tabTextAppearance="@style/TextAppearance.Widget.TabWidget" app:tabTextColor="@color/ghostwhite">
+        <com.google.android.material.tabs.TabItem android:id="@+id/navigation_lua" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_package"/>
+        <com.google.android.material.tabs.TabItem android:id="@+id/navigation_log" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_log"/>
+        <com.google.android.material.tabs.TabItem android:id="@+id/navigation_api" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title_setting"/>
+    </com.google.android.material.tabs.TabLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.viewpager.widget.ViewPager android:id="@+id/viewPager" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

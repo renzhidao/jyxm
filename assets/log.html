@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>算法助手Pro</title>
+    <style>
+        :root {
+             --primary-color: #1e90ff;
+             --background: #f8f9fa;
+             --text-color: #212529;
+         }
+.copy-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 2px 5px;
+	background: var(--primary-color);
+	color: white;
+    border: none;
+    border-radius: 4px;
+}
+         body {
+             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+             line-height: 1.6;
+             background: var(--background);
+             color: var(--text-color);
+         }
+
+         .container {
+             margin: 0 auto;
+             background: white;
+             padding: 0.5rem;
+             border-radius: 8px;
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+              overflow: auto; /* 允许内容溢出时滚动 */
+         }
+
+         .log-item {
+             margin-bottom: 1rem;
+             border-left: 2px solid var(--primary-color);
+             padding-left: 1rem;
+         }
+
+         dt {
+             font-weight: 600;
+             color: var(--primary-color);
+             margin-bottom: 0.5rem;
+             position: relative; /* 为绝对定位按钮提供基准 */
+    padding-right: 30px; /* 给按钮留出空间 */
+         }
+
+         .log-content{
+         background: var(--background);
+         padding: 0.5rem;
+         border-radius: 4px;
+         margin: 0.5rem 0;
+         overflow-x: auto;
+         overflow-y: auto;
+         white-space: pre-wrap;
+         word-wrap: break-word;
+         font-family: Monaco, Consolas, "Courier New", monospace;
+         font-size: 1em;
+         max-height: 16em;
+         line-height: 1.6;
+     }
+
+     .stacktrace{
+         background: var(--background);
+         padding: 0.5rem;
+         border-radius: 4px;
+         margin: 0.5rem 0;
+         overflow-x: auto;
+         overflow-y: auto;
+         white-space: pre-wrap;
+         word-wrap: break-word;
+         font-family: Monaco, Consolas, "Courier New", monospace;
+         font-size: 1em;
+         max-height: 160em;
+         line-height: 1.6;
+     }
+     @media (max-width: 768px) {
+         .log-content {
+             max-height: 12.8em;
+             font-size: 0.8em;
+         }
+         .stacktrace {
+             max-height: 120em;
+             font-size: 0.8em;
+         }
+     }
+         .log-value{
+           padding-left: 1rem;
+         }
+ .stacktrace-line {
+   cursor: pointer;
+   position: relative;
+ }
+ .searchResult{
+     background-color: yellow;
+ }
+
+ .stacktrace-line:active {
+   background-color: rgba(0,0,0,0.1);
+ }
+
+ .context-menu {
+   position: absolute;
+   background: white;
+   border: 1px solid #ccc;
+   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+   z-index: 1000;
+ }
+
+ .context-menu-item {
+   padding: 8px 16px;
+   cursor: pointer;
+   transition: background 0.2s;
+ }
+
+ .context-menu-item:hover {
+   background: #f0f0f0;
+ }
+         .fridaLog{
+         padding: 0.5rem;
+         border-radius: 4px;
+         margin: 0.5rem 0;
+         overflow-x: auto;
+         overflow-y: auto;
+         word-wrap: break-word;
+		 white-space: pre-wrap;
+         line-height: 1.6;
+  }
+  .error{
+         color:red;
+  }
+
+
+  .search-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #F9F9F9;
+    padding: 8px 16px;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.search-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.search-input {
+    flex: 1;
+    margin: 0 12px;
+    padding: 8px;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.search-label {
+    color: #212529;
+    font-size: 14px;
+}
+
+.search-counter {
+    color: #666;
+    font-size: 14px;
+    min-width: 60px;
+    text-align: right;
+}
+
+.search-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.search-button {
+    flex: 1;
+    padding: 8px;
+    margin: 0 4px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    </style>
+
+</head>
+<script>
+    window.changeNodes=[];
+    function escapeHtml(unsafeStr) {
+if (unsafeStr == null) return null;
+return unsafeStr.replace(/[&<>"']/g, function(match) {
+    return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&apos;'
+    }[match];
+});
+}
+function search(keyword) {
+    clearSearch()
+
+    console.time("search")
+    const regex = new RegExp(`(${keyword})`, 'gi');
+    let logNodeArray=logContent=document.getElementsByClassName("log-text");
+
+    for(let i=0;i<logNodeArray.length;i++){
+         const logNode =logNodeArray[i];
+         let text=logNode.innerText;
+         if(text.indexOf(keyword)==-1){
+            continue;
+         }
+         text=text.replaceAll(keyword,"#searchRes#"); //先占位,避免搜索结果存在特殊字符也被转义了
+         text=escapeHtml(text);	//对text进行转义,替换特殊字符转为html标签
+         let newSpan='<span class="searchResult">'+keyword+'</span>';
+         logNode.innerHTML=text.replaceAll("#searchRes#",newSpan);
+         window.changeNodes.push(logNode);
+    }
+    console.timeEnd("search")
+
+    return document.getElementsByClassName("searchResult").length;
+}
+function scrollToMatch(index) {
+
+    let searchResultArray=document.getElementsByClassName("searchResult");
+    if (searchResultArray.length === 0) return;
+    for(let i=0;i<searchResultArray.length;i++){
+        let span=searchResultArray[i];
+        span.style.backgroundColor = 'yellow';
+    }
+    const target=searchResultArray[index]
+    target.style.backgroundColor = '#1e90ff';
+    target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+    });
+}
+function clearSearch() {
+    for(let i=0;i<window.changeNodes.length;i++){
+        let logNode=window.changeNodes[i];
+        logNode.innerText=logNode.innerText;
+    }
+    window.changeNodes=[];
+}
+</script>
+<body>
+<div id="container"  class="container">
+    <dl>
+        {{body}}
+        {{stack}}
+
+    </dl>
+</div>
+
+<div id="searchPanel" class="search-panel" style="display: none;">
+    <div class="search-header">
+        <span class="search-label">查找</span>
+        <input type="text" id="searchInput"
+               class="search-input"
+               placeholder="输入搜索内容"
+               autocapitalize="off"
+               autocomplete="off">
+        <span id="searchCounter" class="search-counter">0/0</span>
+    </div>
+    <div class="search-controls">
+
+        <button id="prevButton" class="search-button">上一个</button>
+        <button id="nextButton" class="search-button">下一个</button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var copyText="";
+    function createContextMenu() {
+      const menu = document.createElement('div');
+      menu.className = 'context-menu';
+      menu.style.display = 'none';
+
+      const actions = [
+        {name: '复制类名', handler: copyClassName},
+        {name: '复制方法名', handler: copyMethodName},
+        {name: '复制整行', handler: copyFullLine},
+        {name: '添加到hook', handler: addToHook}
+      ];
+
+      menu.innerHTML = actions.map(a =>
+        `<div class="context-menu-item" onclick="${a.handler.name}(this)">${a.name}</div>`
+      ).join('');
+
+      document.body.appendChild(menu);
+      return menu;
+    }
+
+    let longPressTimer;
+    const menu = createContextMenu();
+    let currentLine;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.stacktrace-line').forEach(line => {
+        line.addEventListener('click', handleClick);
+      });
+    });
+
+    function cancelLongPress() {
+     console.log("mouseup");
+      clearTimeout(longPressTimer);
+    }
+
+    function handleClick(e) {
+       currentLine = e.target;
+       copyText=currentLine.innerText
+       e.stopPropagation();
+       showContextMenu(e.pageX, e.pageY);
+    }
+
+    function showContextMenu(x, y) {
+      menu.style.left = `${x}px`;
+      menu.style.top = `${y}px`;
+      menu.style.display = 'block';
+    }
+
+    document.addEventListener('click', (e) => {
+        menu.style.display = 'none';
+
+    });
+
+    function copyClassName() {
+        algorithmAideLog.onJsItemSelected(0,copyText)
+    }
+
+    function copyMethodName() {
+        algorithmAideLog.onJsItemSelected(1,copyText)
+    }
+
+    function copyFullLine() {
+        algorithmAideLog.onJsItemSelected(2,copyText)
+    }
+
+    function addToHook() {
+        algorithmAideLog.onJsItemSelected(3,copyText)
+    }
+
+    function getCopyText(){
+        const data = { value: copyText };
+        copyText="";//释放缓存
+        return data;
+    }
+</script>
+<script>
+    const searchPanel=document.getElementById('searchPanel');
+   const container=document.getElementById("container");
+   const viewportHeight = document.documentElement.clientHeight-30;
+     let currentSearchIndex = 0;
+     let totalResults = 0;
+     let debounceTimer;
+
+
+     function debounce(func, delay = 300) {
+         return (...args) => {
+             clearTimeout(debounceTimer);
+             debounceTimer = setTimeout(() => func.apply(this, args), delay);
+         };
+     }
+
+     function initSearch() {
+         const searchInput = document.getElementById('searchInput');
+         const prevButton = document.getElementById('prevButton');
+         const nextButton = document.getElementById('nextButton');
+
+
+         searchInput.addEventListener('input', debounce(function(e) {
+             performSearch(e.target.value);
+         }));
+
+
+         searchInput.addEventListener('keypress', (e) => {
+             if (e.key === 'Enter') {
+                 e.preventDefault();
+                 clearTimeout(debounceTimer);
+                 performSearch(e.target.value);
+             }
+         });
+
+         prevButton.addEventListener('click', () => navigateSearch(-1));
+         nextButton.addEventListener('click', () => navigateSearch(1));
+
+     }
+
+
+function showSearch(){
+ if(searchPanel.style=="block"){
+	return;
+ }
+ searchPanel.style.display = 'block';
+  container.style.height = `${viewportHeight - 94}px`;
+}
+function hiddenSearch(){
+clearSearch();
+ if(searchPanel.style=="none"){
+	return;
+ }
+	searchPanel.style.display = 'none';
+	container.style.height = `${viewportHeight}px`;
+ }
+
+ function setTextSearch(text = "") {
+     showSearch();
+     const searchInput = document.getElementById('searchInput');
+     if(searchInput.value==text){
+         return;
+     }
+     searchInput.value = text;
+     performSearch(text);
+     searchInput.focus();
+ }
+
+
+     function performSearch(keyword) {
+         if (!keyword) {
+             clearSearch();
+             updateCounter();
+             return;
+         }
+
+         totalResults = search(keyword);
+         currentSearchIndex = totalResults > 0 ? 0 : -1;
+         updateCounter();
+
+         if (totalResults > 0) {
+             scrollToMatch(currentSearchIndex);
+         }
+     }
+
+     function navigateSearch(direction) {
+         if (totalResults === 0) return;
+
+         currentSearchIndex = (currentSearchIndex + direction + totalResults) % totalResults;
+         scrollToMatch(currentSearchIndex);
+         updateCounter();
+     }
+
+     function updateCounter() {
+         const counter = document.getElementById('searchCounter');
+         counter.textContent = totalResults > 0
+             ? `${currentSearchIndex + 1}/${totalResults}`
+             : '0/0';
+     }
+
+
+     document.addEventListener('DOMContentLoaded', initSearch);
+</script>
+
+<script>
+    // 自动为所有dt元素添加复制按钮
+    document.querySelectorAll('.log-item dt').forEach(dt => {
+        // 创建按钮元素
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = '复制';
+
+
+        // 添加点击事件
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            copyText = dt.nextElementSibling.innerText;
+            if (copyText) {
+                var textArea = document.createElement("textarea");
+				textArea.value = copyText;
+				document.body.appendChild(textArea);
+				textArea.select();
+				document.execCommand("copy");
+				document.body.removeChild(textArea);
+				algorithmAideLog.showToast("已复制到剪贴板");
+            }
+        });
+
+        // 插入到dt元素中
+        dt.appendChild(btn);
+    });
+
+
+
+</script>

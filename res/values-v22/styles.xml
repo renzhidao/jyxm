@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.AppCompat">
+    </style>
+    <style name="Base.Theme.AppCompat.Light">
+    </style>
+    <style name="Base.V22.Theme.AppCompat">
+        <item name="actionModeShareDrawable">?unknown_attr_ref: 1010479</item>
+        <item name="editTextBackground">?unknown_attr_ref: 1010352</item>
+    </style>
+    <style name="Base.V22.Theme.AppCompat.Light">
+        <item name="actionModeShareDrawable">?unknown_attr_ref: 1010479</item>
+        <item name="editTextBackground">?unknown_attr_ref: 1010352</item>
+    </style>
+</resources>

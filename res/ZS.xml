@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:background="?attr/colorPrimary" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:layout_constraintTop_toTopOf="0" app:popupTheme="@style/AppTheme.PopupOverlay" app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" app:title="关于我们" app:titleTextColor="@color/white"/>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="bottom" android:orientation="vertical" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+                <ImageView android:layout_gravity="center_horizontal" android:id="@+id/imageView" android:paddingTop="@dimen/nav_header_vertical_spacing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/app_name" app:srcCompat="@drawable/icon_splash" app:tint="?attr/colorPrimary"/>
+                <TextView android:layout_gravity="center_horizontal" android:paddingTop="@dimen/nav_header_vertical_spacing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/app_name"/>
+                <TextView android:layout_gravity="center_horizontal" android:id="@+id/textView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/subhead"/>
+            </LinearLayout>
+            <TextView android:id="@+id/about_message" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="20dp" android:textIsSelectable="true"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

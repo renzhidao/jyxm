@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="109" android:versionName="1.0.9" android:compileSdkVersion="32" android:compileSdkVersionCodename="12" package="com.junge.algorithmAidePro" platformBuildVersionCode="32" platformBuildVersionName="12">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <application android:theme="@style/Theme.blue" android:label="@string/app_name" android:icon="@drawable/icon_app" android:name="com.junge.algorithmAidePro.MyApplication" android:allowBackup="true" android:supportsRtl="true" android:usesCleartextTraffic="true" android:networkSecurityConfig="@xml/network_security_config" android:roundIcon="@drawable/icon_app" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:requestLegacyExternalStorage="true">
+        <activity android:name="com.junge.algorithmAidePro.Activity.FridaEditActivity" android:exported="false" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.SpecialThanksActivity" android:exported="false"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.DexViewActivity" android:exported="false" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.RookieActivity" android:exported="false" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.WebActivity" android:exported="false" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.HookListActivity" android:exported="false" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.AddDynamicClass" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_user_agreement" android:name="com.junge.algorithmAidePro.Activity.UserAgreement" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.LogReadActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.AboutActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.LogListViewActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/title_activity_app_settings" android:name="com.junge.algorithmAidePro.Activity.AppSettingActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.junge.algorithmAidePro.Activity.SplashActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.junge.algorithmAidePro.Activity.MainActivity" android:screenOrientation="portrait"/>
+        <meta-data android:name="xposedmodule" android:value="true"/>
+        <meta-data android:name="xposeddescription" android:value="算法助手，做最好的调试工具"/>
+        <meta-data android:name="xposedminversion" android:value="54"/>
+        <meta-data android:name="xposedsharedprefs" android:value="true"/>
+        <meta-data android:name="xposedscope" android:resource="@array/xposed_scope"/>
+        <provider android:name="androidx.core.content.FileProvider" android:exported="false" android:authorities="com.junge.algorithmAidePro.fileProvider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <provider android:name="com.junge.algorithmAidePro.provider.ConfigProvider" android:exported="true" android:authorities="algorithmAidePro"/>
+        <provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="com.junge.algorithmAidePro.androidx-startup">
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+        </provider>
+    </application>
+</manifest>

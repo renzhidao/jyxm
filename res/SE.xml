@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout android:id="@+id/log_refresh" android:layout_width="match_parent" android:layout_height="match_parent">
+        <com.scwang.smart.refresh.header.ClassicsHeader android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <com.junge.algorithmAidePro.ImageList.LogList android:scrollbarSize="10dp" android:id="@+id/ImageListView" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent" app:fastScrollEnabled="true" app:fastScrollHorizontalThumbDrawable="@drawable/scroller_drawable" app:fastScrollHorizontalTrackDrawable="@drawable/scroller_bg_drawable" app:fastScrollVerticalThumbDrawable="@drawable/scroller_drawable" app:fastScrollVerticalTrackDrawable="@drawable/scroller_bg_drawable"/>
+        <com.scwang.smart.refresh.footer.ClassicsFooter android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</LinearLayout>

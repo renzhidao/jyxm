@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.Design.TabLayout">
+        <item name="tabGravity">1</item>
+        <item name="tabMode">1</item>
+    </style>
+    <style name="Widget.MaterialComponents.MaterialCalendar.HeaderSelection">
+        <item name="?0x1010034">?attr/textAppearanceHeadline6</item>
+        <item name="?0x1010098">?attr/colorOnPrimary</item>
+        <item name="?0x10100ab">3</item>
+        <item name="?0x1010153">@integer/mtrl_calendar_selection_text_lines</item>
+    </style>
+</resources>

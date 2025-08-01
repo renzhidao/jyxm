@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <item android:icon="@drawable/ic_search_black_24dp" android:id="@+id/action_search" android:title="@string/search_hint" app:iconTint="0x106000b" app:showAsAction="ifRoom"/>
+    <item android:icon="@drawable/ic_clear" android:id="@+id/clear" android:orderInCategory="90" android:title="@string/menu_clear_title" app:showAsAction="ifRoom"/>
+    <item android:icon="@drawable/ic_clear" android:id="@+id/save" android:orderInCategory="90" android:title="@string/menu_save_title" app:showAsAction="never"/>
+</menu>

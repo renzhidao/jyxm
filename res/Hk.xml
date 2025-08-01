@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:id="@+id/groupView" android:background="@color/ghostwhite" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp">
+            <TextView android:textSize="16sp" android:textColor="?attr/colorPrimary" android:ellipsize="end" android:id="@+id/TextView_Group" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginBottom="10dp" android:text="标题" android:maxLines="1" android:layout_marginStart="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/imageListItem" android:background="?attr/selectableItemBackground" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginRight="10dp">
+        <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="0.75">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginStart="10dp">
+                <TextView android:textSize="16sp" android:textColor="@color/black" android:ellipsize="end" android:id="@+id/TextView_List" android:layout_width="0dp" android:layout_height="wrap_content" android:text="标题" android:maxLines="1" android:layout_weight="0.8"/>
+            </LinearLayout>
+            <TextView android:textSize="11sp" android:ellipsize="end" android:id="@+id/TextView_List_vice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="二级标题" android:maxLines="1" android:singleLine="true" android:layout_marginStart="10dp"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="0.25">
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginRight="5dp">
+                <androidx.appcompat.widget.SwitchCompat android:layout_gravity="right" android:id="@+id/TextView_List_vice_Switch" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
